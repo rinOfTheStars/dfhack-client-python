@@ -86,12 +86,11 @@ def remote(plugin=''):
     from inspect import signature
     input, output, function, _plugin = None, None, None, None
 
-    async def wrapper(*args, **kwds):
+    async def wrapper(requestData = None):
         #if isinstance(plugin, str):
         #    kwds['plugin'] = plugin
-        _id = await BindMethod(function.__name__, input, output, plugin=_plugin, **kwds)
-
-        _writer.write( request(_id, input()) )
+        _id = await BindMethod(function.__name__, input, output, _plugin)
+        _writer.write( request(_id, requestData or input()))
 
         id, size = await get_header()
         if id == DFHackReplyCode.RPC_REPLY_RESULT:
@@ -104,6 +103,13 @@ def remote(plugin=''):
             obj = output()
             obj.ParseFromString(buffer)
             return obj
+        elif id == DFHackReplyCode.RPC_REPLY_TEXT:
+            msg = await _reader.read(size)
+            obj = CoreProtocol_pb2.CoreTextNotification()
+            obj.ParseFromString(msg)
+            raise Exception(obj)
+        else:
+            raise Exception(f"Unknown reply code {id}")
 
     def parse(f):
         nonlocal input, output, function
