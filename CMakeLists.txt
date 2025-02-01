@@ -13,8 +13,10 @@ add_custom_command(OUTPUT protos
   -I${PROTO-DIR-CORE}
   -I${PROTO-DIR-PLUGINS}
   --python_out=${PY-DIR}
-  ${PROTO-DIR-PLUGINS}/RemoteFortressReader.proto
-  ${PROTO-DIR-PLUGINS}/ItemdefInstrument.proto
+  ${PROTO-DIR-PLUGINS}/remotefortressreader/RemoteFortressReader.proto
+  ${PROTO-DIR-PLUGINS}/remotefortressreader/ItemdefInstrument.proto
+  ${PROTO-DIR-PLUGINS}/remotefortressreader/AventureControl.proto
+  ${PROTO-DIR-PLUGINS}/remotefortressreader/DwarfControl.proto
   ${PROTO-DIR-CORE}/CoreProtocol.proto
   ${PROTO-DIR-CORE}/Basic.proto
   ${PROTO-DIR-CORE}/BasicApi.proto
