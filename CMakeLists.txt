@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.13)
 project(blendwarf NONE)
 
 set(PROTOC-BIN "protoc")
-set(PROTO-DIR-CORE    "${CMAKE_CURRENT_SOURCE_DIR}/../dfhack/library//remotefortressreader/proto")
+set(PROTO-DIR-CORE    "${CMAKE_CURRENT_SOURCE_DIR}/../dfhack/library/remotefortressreader/proto")
 set(PROTO-DIR-PLUGINS "${CMAKE_CURRENT_SOURCE_DIR}/../dfhack/plugins/proto")
 set(PY-DIR "${CMAKE_CURRENT_BINARY_DIR}/py_export")
 
