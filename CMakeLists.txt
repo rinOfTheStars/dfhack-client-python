@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.13)
 project(blendwarf NONE)
 
 set(PROTOC-BIN "protoc")
-set(PROTO-DIR-CORE    "${CMAKE_CURRENT_SOURCE_DIR}/../dfhack/library/proto")
+set(PROTO-DIR-CORE    "${CMAKE_CURRENT_SOURCE_DIR}/../dfhack/library//remotefortressreader/proto")
 set(PROTO-DIR-PLUGINS "${CMAKE_CURRENT_SOURCE_DIR}/../dfhack/plugins/proto")
 set(PY-DIR "${CMAKE_CURRENT_BINARY_DIR}/py_export")
 
@@ -13,10 +13,10 @@ add_custom_command(OUTPUT protos
   -I${PROTO-DIR-CORE}
   -I${PROTO-DIR-PLUGINS}
   --python_out=${PY-DIR}
-  ${PROTO-DIR-PLUGINS}/remotefortressreader/RemoteFortressReader.proto
-  ${PROTO-DIR-PLUGINS}/remotefortressreader/ItemdefInstrument.proto
-  ${PROTO-DIR-PLUGINS}/remotefortressreader/AventureControl.proto
-  ${PROTO-DIR-PLUGINS}/remotefortressreader/DwarfControl.proto
+  ${PROTO-DIR-PLUGINS}/RemoteFortressReader.proto
+  ${PROTO-DIR-PLUGINS}/ItemdefInstrument.proto
+  ${PROTO-DIR-PLUGINS}/AventureControl.proto
+  ${PROTO-DIR-PLUGINS}/DwarfControl.proto
   ${PROTO-DIR-CORE}/CoreProtocol.proto
   ${PROTO-DIR-CORE}/Basic.proto
   ${PROTO-DIR-CORE}/BasicApi.proto
